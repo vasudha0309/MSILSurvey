@@ -33,11 +33,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         View view;
         LayoutInflater mInflator = LayoutInflater.from(mContext);
         view = mInflator.inflate(R.layout.card,viewGroup,false);
-        return new myViewHolder(View);
+        return new myViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder myViewHolder, int i) {
+
 
         myViewHolder.question.setText(mData.get(i).getQuestion());
         myViewHolder.editText.setVisibility(View.GONE);
@@ -58,6 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public static  class myViewHolder extends RecyclerView.ViewHolder{
 
+        int questionNumber;
         TextView question;
         RadioGroup radioGroup;
         RadioButton radioButton;

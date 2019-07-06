@@ -2,6 +2,7 @@ package com.example.survey;
 
 public class Question {
 
+    private int questionNumber;
     private String question;
     private String[] options = new String[5];
     private int seekbarValue;
@@ -12,13 +13,22 @@ public class Question {
     public Question() {
     }
 
-    public Question(String question, String[] options, int seekbarValue, int seekBar, int ratingBar, int editText) {
+    public Question(int questionNumber, String question, String[] options, int seekbarValue, int seekBar, int ratingBar, int editText) {
+        this.questionNumber = questionNumber;
         this.question = question;
         this.options = options;
         this.seekbarValue = seekbarValue;
         this.seekBar = seekBar;
         this.ratingBar = ratingBar;
         this.editText = editText;
+    }
+
+    public int getQuestionNumber() {
+        return questionNumber;
+    }
+
+    public void setQuestionNumber(int questionNumber) {
+        this.questionNumber = questionNumber;
     }
 
     public String getQuestion() {
