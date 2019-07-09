@@ -29,12 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView myRV = findViewById(R.id.recycler_view);
         RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,questionList);
-        myRV.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false){
-                @Override
-                public boolean canScrollHorizontally() {
-                    return false;
-                }
-        });
+        myRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         myRV.setAdapter(myAdapter);
 
     }
