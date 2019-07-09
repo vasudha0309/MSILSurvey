@@ -17,7 +17,7 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/questions"
@@ -30,19 +30,19 @@
 
         <com.hsalf.smilerating.SmileRating
             android:id="@+id/smile_rating"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/questions"
             android:layout_centerVertical="true"
-            android:layout_margin="20dp"
+            android:layout_centerInParent="true"
             app:angryColor="#FDD835"
             app:drawingColor="#353431"
             app:isIndicator="false"
             app:normalColor="#FDD835"
             app:placeHolderBackgroundColor="#e6e8ed"
             app:placeHolderSmileColor="@color/colorAccent"
-            app:textNonSelectionColor="#AEB3B5"
             app:showLine="false"
+            app:textNonSelectionColor="#AEB3B5"
             app:textSelectionColor="#000000" />
 
 
@@ -50,7 +50,7 @@
             android:id="@+id/suggestions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/questions"
+            android:layout_below="@id/rating_bar"
             android:layout_centerInParent="true"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -72,6 +72,12 @@
             android:numStars="5"
             android:progressTint="#FFB300"
             android:secondaryProgressTint="@color/transparent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/questions"
+            android:layout_alignParentBottom="true" />
 
     </RelativeLayout>
 
