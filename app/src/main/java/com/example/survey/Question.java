@@ -2,39 +2,38 @@ package com.example.survey;
 
 public class Question {
 
+    private int questionNumber;
     private String question;
-    private String[] options = new String[5];
-    private int seekbarValue;
-    private int seekBar;
+    private int smileRatingBar;
     private  int ratingBar;
     private int editText;
 
     public Question() {
     }
 
-    public Question(String question, String[] options, int seekbarValue, int seekBar, int ratingBar, int editText) {
+    public Question(int questionNumber, String question, int smileRatingBar, int ratingBar, int editText) {
+        this.questionNumber = questionNumber;
         this.question = question;
-        this.options = options;
-        this.seekbarValue = seekbarValue;
-        this.seekBar = seekBar;
+        this.smileRatingBar = smileRatingBar;
         this.ratingBar = ratingBar;
         this.editText = editText;
     }
+
+    public int getQuestionNumber() {
+        return questionNumber;
+    }
+
 
     public String getQuestion() {
         return question;
     }
 
-    public String[] getOptions() {
-        return options;
+    public int getSmileRatingBar() {
+        return smileRatingBar;
     }
 
-    public int getSeekbarValue() {
-        return seekbarValue;
-    }
-
-    public int getSeekBar() {
-        return seekBar;
+    public void setSmileRatingBar(int smileRatingBar) {
+        this.smileRatingBar = smileRatingBar;
     }
 
     public int getRatingBar() {
@@ -49,17 +48,6 @@ public class Question {
         this.question = question;
     }
 
-    public void setOptions(String[] options) {
-        this.options = options;
-    }
-
-    public void setSeekbarValue(int seekbarValue) {
-        this.seekbarValue = seekbarValue;
-    }
-
-    public void setSeekBar(int seekBar) {
-        this.seekBar = seekBar;
-    }
 
     public void setRatingBar(int ratingBar) {
         this.ratingBar = ratingBar;

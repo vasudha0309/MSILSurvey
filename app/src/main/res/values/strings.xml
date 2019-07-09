@@ -1,10 +1,5 @@
 <resources>
     <string name="app_name">Survey</string>
     <string name="question_1">Question</string>
-    <string name="choice1">choice1</string>
-    <string name="choice2">choice2</string>
-    <string name="choice3">choice3</string>
-    <string name="choice4">choice4</string>
-    <string name="choice5">choice5</string>
     <string name="suggestions">add suggestions here</string>
 </resources>
