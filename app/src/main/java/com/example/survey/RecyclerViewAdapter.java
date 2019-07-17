@@ -6,14 +6,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hsalf.smilerating.BaseRating;
 import com.hsalf.smilerating.SmileRating;
 
 import java.util.List;
+
+import static com.example.survey.MainActivity.changeButton;
+import static com.example.survey.MainActivity.count;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.myViewHolder> {
 
@@ -50,56 +55,65 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             myViewHolder.ratingBar.setVisibility(View.GONE);
 
             @BaseRating.Smiley int smiley = myViewHolder.smileRating.getSelectedSmile();
-            myViewHolder.smileRating.setOnSmileySelectionListener(new SmileRating.OnSmileySelectionListener() {
-                @Override
-                public void onSmileySelected(@BaseRating.Smiley int smiley, boolean reselected) {
-                    // reselected is false when user selects different smiley that previously selected one
-                    // true when the same smiley is selected.
-                    // Except if it first time, then the value will be false.
-                    switch (smiley) {
-                        case SmileRating.BAD:
-//                            myViewHolder.smileRating.setPlaceholderBackgroundColor(Color.GREEN);
-                            break;
-                        case SmileRating.GOOD:
-
-                            break;
-                        case SmileRating.GREAT:
-//                            df.smileRating.setNormalColor(Color.GREEN);
-                            break;
-                        case SmileRating.OKAY:
-
-                            break;
-                        case SmileRating.TERRIBLE:
-
-                            break;
-                    }
-                }
-            });
+//            myViewHolder.smileRating.setOnSmileySelectionListener(new SmileRating.OnSmileySelectionListener() {
+//                @Override
+//                public void onSmileySelected(@BaseRating.Smiley int smiley, boolean reselected) {
+//                    // reselected is false when user selects different smiley that previously selected one
+//                    // true when the same smiley is selected.
+//                    // Except if it first time, then the value will be false.
+//                    Toast.makeText(mContext, "Smiley", Toast.LENGTH_SHORT).show();
+//                    switch (smiley) {
+//                        case SmileRating.BAD:
+////                            myViewHolder.smileRating.setPlaceholderBackgroundColor(Color.GREEN);
+//                            break;
+//                        case SmileRating.GOOD:
+//
+//                            break;
+//                        case SmileRating.GREAT:
+////                            df.smileRating.setNormalColor(Color.GREEN);
+//                            break;
+//                        case SmileRating.OKAY:
+//
+//                            break;
+//                        case SmileRating.TERRIBLE:
+//
+//                            break;
+//                    }
+//                }
+//            });
             myViewHolder.smileRating.setOnRatingSelectedListener(new SmileRating.OnRatingSelectedListener() {
                 @Override
                 public void onRatingSelected(int level, boolean reselected) {
+                    Toast.makeText(mContext, "Rating", Toast.LENGTH_SHORT).show();
+                    count++;
+                    changeButton();
                     // level is from 1 to 5 (0 when none selected)
                     // reselected is false when user selects different smiley that previously selected one
                     // true when the same smiley is selected.
                     // Except if it first time, then the value will be false.
+                    Toast.makeText(mContext, "" + count, Toast.LENGTH_SHORT).show();
                 }
             });
 
         }
+
         if (i == 1) {
+
+
 //            final myViewHolder df=myViewHolder;
             myViewHolder.question.setText(String.valueOf(mData.get(i).getQuestion()));
             myViewHolder.smileRating.setVisibility(View.VISIBLE);
             myViewHolder.editText.setVisibility(View.GONE);
             myViewHolder.ratingBar.setVisibility(View.GONE);
 
-            @BaseRating.Smiley int smiley = myViewHolder.smileRating.getSelectedSmile();
+            @BaseRating.Smiley final int smiley = myViewHolder.smileRating.getSelectedSmile();
             myViewHolder.smileRating.setOnSmileySelectionListener(new SmileRating.OnSmileySelectionListener() {
                 @Override
                 public void onSmileySelected(@BaseRating.Smiley int smiley, boolean reselected) {
                     // reselected is false when user selects different smiley that previously selected one
                     // true when the same smiley is selected.
                     // Except if it first time, then the value will be false.
+                    Toast.makeText(mContext, "Smiley", Toast.LENGTH_SHORT).show();
                     switch (smiley) {
                         case SmileRating.BAD:
 //                            myViewHolder.smileRating.setPlaceholderBackgroundColor(Color.GREEN);
@@ -122,10 +136,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             myViewHolder.smileRating.setOnRatingSelectedListener(new SmileRating.OnRatingSelectedListener() {
                 @Override
                 public void onRatingSelected(int level, boolean reselected) {
+                    Toast.makeText(mContext, "Rating", Toast.LENGTH_SHORT).show();
+                    count++;
+                    changeButton();
                     // level is from 1 to 5 (0 when none selected)
                     // reselected is false when user selects different smiley that previously selected one
                     // true when the same smiley is selected.
                     // Except if it first time, then the value will be false.
+                    Toast.makeText(mContext, "" + count, Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -137,6 +155,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             myViewHolder.editText.setVisibility(View.GONE);
             myViewHolder.ratingBar.setVisibility(View.VISIBLE);
 
+            myViewHolder.ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                @Override
+                public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                    count++;
+                    changeButton();
+                    Toast.makeText(mContext, "" + count, Toast.LENGTH_SHORT).show();
+                }
+
+
+            });
+
 
         }
         if (i == 3) {
@@ -145,6 +174,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             myViewHolder.smileRating.setVisibility(View.GONE);
             myViewHolder.editText.setVisibility(View.VISIBLE);
             myViewHolder.ratingBar.setVisibility(View.GONE);
+            if (myViewHolder.editText.getText().toString() != "") {
+                Toast.makeText(mContext, "" + count, Toast.LENGTH_SHORT).show();
+                count++;
+                Toast.makeText(mContext, "" + count, Toast.LENGTH_SHORT).show();
+            }
+            changeButton();
         }
 
     }
@@ -160,6 +195,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         RatingBar ratingBar;
         EditText editText;
         SmileRating smileRating;
+
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);

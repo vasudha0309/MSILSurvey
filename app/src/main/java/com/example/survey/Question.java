@@ -6,6 +6,7 @@ public class Question {
     private int smileRatingBar;
     private  int ratingBar;
     private int editText;
+    private int nextButton;
 
 
     public Question() {
