@@ -2,25 +2,21 @@ package com.example.survey;
 
 public class Question {
 
-    private int questionNumber;
     private String question;
     private int smileRatingBar;
     private  int ratingBar;
     private int editText;
 
+
     public Question() {
     }
 
-    public Question(int questionNumber, String question, int smileRatingBar, int ratingBar, int editText) {
-        this.questionNumber = questionNumber;
+    public Question(String question, int smileRatingBar, int ratingBar, int editText) {
+
         this.question = question;
         this.smileRatingBar = smileRatingBar;
         this.ratingBar = ratingBar;
         this.editText = editText;
-    }
-
-    public int getQuestionNumber() {
-        return questionNumber;
     }
 
 

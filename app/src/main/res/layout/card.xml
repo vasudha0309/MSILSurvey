@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerInParent="true"
-    android:layout_marginLeft="36dp"
+    android:layout_marginLeft="40dp"
     android:layout_marginTop="100dp"
-    android:layout_marginRight="36dp"
-    android:layout_marginBottom="80dp"
+    android:layout_marginRight="40dp"
+    android:layout_marginBottom="130dp"
     android:elevation="2dp"
+    android:isScrollContainer="false"
     app:cardCornerRadius="8dp"
-    tools:context=".MainActivity"
-    android:isScrollContainer="false">
+    tools:context=".MainActivity">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -31,9 +31,7 @@
         <com.hsalf.smilerating.SmileRating
             android:id="@+id/smile_rating"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/questions"
-            android:layout_centerVertical="true"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"
             app:angryColor="#FDD835"
             app:drawingColor="#353431"
@@ -78,6 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/questions"
             android:layout_alignParentBottom="true" />
+
 
     </RelativeLayout>
 

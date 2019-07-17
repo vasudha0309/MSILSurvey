@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RatingBar;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.hsalf.smilerating.BaseRating;
@@ -45,7 +44,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
         if(i==0) {
-//            final myViewHolder df=myViewHolder;
             myViewHolder.question.setText(String.valueOf(mData.get(i).getQuestion()));
             myViewHolder.smileRating.setVisibility(View.VISIBLE);
             myViewHolder.editText.setVisibility(View.GONE);
@@ -158,10 +156,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public static  class myViewHolder extends RecyclerView.ViewHolder{
 
-        int questionNumber;
         TextView question;
-        SeekBar seekBar;
-        TextView seekBarValue;
         RatingBar ratingBar;
         EditText editText;
         SmileRating smileRating;
