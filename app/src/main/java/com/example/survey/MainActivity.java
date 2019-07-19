@@ -1,6 +1,7 @@
 package com.example.survey;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (count < 5)
+                if (count < 4)
                     Toast.makeText(MainActivity.this, "Fill all responses", Toast.LENGTH_SHORT).show();
 //                else
 //                {
@@ -57,8 +58,10 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("NewApi")
     public static void changeButton() {
-        if (count == 5)
+        if (count == 4) {
             submitButton.setBackgroundResource(R.drawable.btn_bg1);
+            submitButton.setTextColor(Color.WHITE);
+        }
 
     }
 

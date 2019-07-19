@@ -25,6 +25,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private Context mContext;
     private List<Question> mData;
+    public int[] check = {0, 0, 0, 0};
 
     public RecyclerViewAdapter(Context mContext, List<Question> mData) {
         this.mContext = mContext;
@@ -49,12 +50,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
         if(i==0) {
+
             myViewHolder.question.setText(String.valueOf(mData.get(i).getQuestion()));
             myViewHolder.smileRating.setVisibility(View.VISIBLE);
             myViewHolder.editText.setVisibility(View.GONE);
             myViewHolder.ratingBar.setVisibility(View.GONE);
 
+
             @BaseRating.Smiley int smiley = myViewHolder.smileRating.getSelectedSmile();
+            if (check[i] == 0) {
+                count++;
+                changeButton();
+            }
+            check[i] = 1;
 //            myViewHolder.smileRating.setOnSmileySelectionListener(new SmileRating.OnSmileySelectionListener() {
 //                @Override
 //                public void onSmileySelected(@BaseRating.Smiley int smiley, boolean reselected) {
@@ -85,8 +93,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 @Override
                 public void onRatingSelected(int level, boolean reselected) {
                     Toast.makeText(mContext, "Rating", Toast.LENGTH_SHORT).show();
-                    count++;
-                    changeButton();
+
+
                     // level is from 1 to 5 (0 when none selected)
                     // reselected is false when user selects different smiley that previously selected one
                     // true when the same smiley is selected.
@@ -105,6 +113,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             myViewHolder.smileRating.setVisibility(View.VISIBLE);
             myViewHolder.editText.setVisibility(View.GONE);
             myViewHolder.ratingBar.setVisibility(View.GONE);
+            final int j = i;
 
             @BaseRating.Smiley final int smiley = myViewHolder.smileRating.getSelectedSmile();
             myViewHolder.smileRating.setOnSmileySelectionListener(new SmileRating.OnSmileySelectionListener() {
@@ -136,9 +145,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             myViewHolder.smileRating.setOnRatingSelectedListener(new SmileRating.OnRatingSelectedListener() {
                 @Override
                 public void onRatingSelected(int level, boolean reselected) {
-                    Toast.makeText(mContext, "Rating", Toast.LENGTH_SHORT).show();
-                    count++;
-                    changeButton();
+
+                    if (check[j] == 0) {
+                        count++;
+                        changeButton();
+                    }
+                    check[j] = 1;
+
                     // level is from 1 to 5 (0 when none selected)
                     // reselected is false when user selects different smiley that previously selected one
                     // true when the same smiley is selected.
@@ -154,12 +167,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             myViewHolder.smileRating.setVisibility(View.GONE);
             myViewHolder.editText.setVisibility(View.GONE);
             myViewHolder.ratingBar.setVisibility(View.VISIBLE);
+            final int j = i;
 
             myViewHolder.ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
                 @Override
                 public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                    count++;
-                    changeButton();
+                    if (check[j] == 0) {
+                        count++;
+                        changeButton();
+                    }
+                    check[j] = 1;
                     Toast.makeText(mContext, "" + count, Toast.LENGTH_SHORT).show();
                 }
 
@@ -176,10 +193,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             myViewHolder.ratingBar.setVisibility(View.GONE);
             if (myViewHolder.editText.getText().toString() != "") {
                 Toast.makeText(mContext, "" + count, Toast.LENGTH_SHORT).show();
-                count++;
-                Toast.makeText(mContext, "" + count, Toast.LENGTH_SHORT).show();
+                if (check[i] == 0) {
+                    count++;
+                    changeButton();
+                }
+                check[i] = 1;
             }
-            changeButton();
+            Toast.makeText(mContext, "" + count, Toast.LENGTH_SHORT).show();
+
         }
 
     }
